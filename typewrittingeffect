@@ -1,0 +1,41 @@
+/*Goes inside an HTML element*/
+<div id="typewriter"></div>
+<style>
+    .typewriter-text {
+        font-family: 'Courier New', Courier, monospace; /* Change the font family */
+        font-size: 18px; /* Change the font size */
+        color: #333; /* Change the text color */
+    }
+    
+    .blinking-cursor {
+        margin-left: 5px;
+        background-color: #EFBB39;
+        animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+        0%, 50% {
+            opacity: 1;
+        }
+        50.1%, 100% {
+            opacity: 0;
+        }
+    }
+</style>
+
+/*Use the run javascript action from the toolbox plugin to run this script, no need for <script> tag*/
+
+const text = "<span class='typewriter-text'>Go to patreon.com/adrian5digo to take you No Code skills to a new lvl</span>";
+    const typewriter = document.getElementById('typewriter');
+    let index = 0;
+    function type() {
+        if (index < text.length) {
+            typewriter.innerHTML = text.slice(0, index) + '<span class="blinking-cursor">|</span>';
+            index++;
+            setTimeout(type, Math.random() * 30 + 50);
+        } else {
+            typewriter.innerHTML = text.slice(0, index) + '<span class="blinking-cursor">|</span>';
+        }
+    }
+    // start typing
+    type();
